@@ -77,7 +77,25 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final playlistHeight = MediaQuery.sizeOf(context).height * 0.25 / 1.1;
     return Scaffold(
-      appBar: AppBar(title: const Text('Musify.')),
+      appBar: AppBar(
+        title: Image.asset(
+          'assets/icons/arfanmusic_title.png',
+          height: 17,
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                'assets/icons/arfanmusic_logo.png',
+                width: 40,
+                height: 40,
+              ),
+            ),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         padding: commonSingleChildScrollViewPadding,
         child: Column(
