@@ -59,6 +59,7 @@ flutter:
     - assets/icons/musify_icon.png
     - assets/icons/arfanmusic_logo.png
     - assets/icons/arfanmusic_title.png
+    - assets/images/arfan_bg.jpg
 
   fonts:
     - family: paytoneOne

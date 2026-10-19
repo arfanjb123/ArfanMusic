@@ -98,23 +98,30 @@ ThemeData getAppTheme(ColorScheme colorScheme) {
   const pureBlackContainer = Color(0xFF121212);
   const pureBlackContainerHigh = Color(0xFF1A1A1A);
 
+  // Warna 'kaca' semi-transparan agar gambar latar tetap terlihat.
+  const glassLow = Color(0x990A0A0A);
+  const glass = Color(0xA6121212);
+  const glassHigh = Color(0xB31A1A1A);
+  const glassHighest = Color(0xBF242426);
+  const transparent = Color(0x00000000);
+
   final bgColor = isLight
       ? colorScheme.surface
-      : (isPureBlack ? pureBlack : null);
+      : (isPureBlack ? transparent : null);
 
   final cardBgColor = isLight
       ? colorScheme.surfaceContainerLow
-      : (isPureBlack ? pureBlackElevated : null);
+      : (isPureBlack ? glass : null);
 
   // modified color scheme for pure black theme
   final effectiveColorScheme = isPureBlack
       ? colorScheme.copyWith(
           surface: pureBlack,
           surfaceContainerLowest: pureBlack,
-          surfaceContainerLow: pureBlackElevated,
-          surfaceContainer: pureBlackContainer,
-          surfaceContainerHigh: pureBlackContainerHigh,
-          surfaceContainerHighest: pureBlackContainerHigh,
+          surfaceContainerLow: glassLow,
+          surfaceContainer: glass,
+          surfaceContainerHigh: glassHigh,
+          surfaceContainerHighest: glassHighest,
         )
       : colorScheme;
 
@@ -170,7 +177,7 @@ ThemeData getAppTheme(ColorScheme colorScheme) {
       fillColor: isLight
           ? colorScheme.surfaceContainerHighest
           : (isPureBlack
-                ? pureBlackContainerHigh
+                ? glassHigh
                 : colorScheme.surfaceContainerHigh),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -185,7 +192,7 @@ ThemeData getAppTheme(ColorScheme colorScheme) {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
     ),
     navigationBarTheme: base.navigationBarTheme.copyWith(
-      backgroundColor: bgColor,
+      backgroundColor: isPureBlack ? const Color(0x99000000) : bgColor,
       elevation: 0,
       height: 70,
       indicatorColor: effectiveColorScheme.primaryContainer,
